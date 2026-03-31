@@ -27,11 +27,21 @@ export default function Home() {
     e.preventDefault();
     const result = await submitApplication(formData);
     
-    if (result.success) {
-      alert(`감사합니다 ${formData.name} 사장님, 성공적으로 접수되었습니다! 곧 연락드릴게요! 🍱`);
-    } else {
-      alert("앗, 잠시 오류가 났어요. 다시 시도해주시겠어요?");
+    try {
+      if (result.success) {
+        alert(`감사합니다 ${formData.name} 사장님, 성공적으로 접수되었습니다! 곧 연락드릴게요! 🍱`);
+      } else {
+        console.error("Server Logic Error:", result.error);
+        alert("앗, 잠시 오류가 났어요. 다시 시도해주시겠어요?");
+      }
+    } catch (error) {
+      console.error("Network/Runtime Error:", error);
+      alert("연결이 원활하지 않습니다. 네트워크를 확인해주세요.");
+    } finally {
+      // 4. 성공하든 실패하든 버튼은 다시 활성화
+      setIsSubmitting(false);
     }
+
   };
 
 
