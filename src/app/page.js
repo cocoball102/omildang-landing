@@ -2,6 +2,7 @@
 // 1. 필요한 도구(이미지 태그, 상태 관리) 가져오기
 import Image from 'next/image';
 import { useState } from 'react';
+import { submitApplication } from './actions'
 
 export default function Home() {
   // 2. 입력값을 저장할 공간 (Java의 DTO 객체 역할)
@@ -20,12 +21,17 @@ export default function Home() {
     });
   };
 
-  // 4. '제출' 버튼 눌렀을 때 실행되는 함수
-  const handleSubmit = (e) => {
-    e.preventDefault(); // 페이지 새로고침 방지
-    // 여기에 나중에 Java 백엔드로 데이터를 보내는 코드를 넣습니다.
-    console.log('제출된 데이터:', formData);
-    alert(`감사합니다, ${formData.name}님! 오밀당에서 곧 연락드리겠습니다.`);
+  
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const result = await submitApplication(formData);
+    
+    if (result.success) {
+      alert("사장님, 성공적으로 접수되었습니다! 곧 연락드릴게요! 🍱");
+    } else {
+      alert("앗, 잠시 오류가 났어요. 다시 시도해주시겠어요?");
+    }
   };
 
   return (
