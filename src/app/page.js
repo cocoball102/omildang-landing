@@ -28,11 +28,13 @@ export default function Home() {
     const result = await submitApplication(formData);
     
     if (result.success) {
-      alert("사장님, 성공적으로 접수되었습니다! 곧 연락드릴게요! 🍱");
+      alert(`감사합니다 ${formData.name} 사장님, 성공적으로 접수되었습니다! 곧 연락드릴게요! 🍱`);
     } else {
       alert("앗, 잠시 오류가 났어요. 다시 시도해주시겠어요?");
     }
   };
+
+
 
   return (
     // 5. 전체 배경 및 레이아웃 (Tailwind CSS 사용)
