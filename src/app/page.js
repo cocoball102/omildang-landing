@@ -39,7 +39,7 @@ export default function Home() {
       alert("연결이 원활하지 않습니다. 네트워크를 확인해주세요.");
     } finally {
       // 4. 성공하든 실패하든 버튼은 다시 활성화
-      setIsSubmitting(false);
+      //setIsSubmitting(false);
     }
 
   };
