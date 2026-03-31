@@ -1,5 +1,5 @@
 'use server' // "이 코드는 서버에서만 돌아간다"는 선언입니다. (보안!)
-
+console.log("주소 체크:", process.env.NEXT_PUBLIC_SUPABASE_URL ? "있음" : "없음");
 import { createClient } from '@supabase/supabase-js'
 
 const supabase = createClient(
