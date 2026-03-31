@@ -13,7 +13,7 @@ export async function submitApplication(formData) {
 
   // 2. DB Insert (JPA의 .save()와 똑같습니다!)
   const { data, error } = await supabase
-    .from('applications') // 사장님이 만든 테이블명
+    .from('application') // 사장님이 만든 테이블명
     .insert([
       { 
         name: formData.name, 
