@@ -24,3 +24,25 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px); /* 20px 아래에서 시작 */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* 제자리로 이동 */
+  }
+}
+
+/* 애니메이션을 적용할 클래스 */
+.animate-fade-in-up {
+  opacity: 0; /* 시작할 때 안 보이게 */
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* 텍스트 줄바꿈을 위한 핵심 CSS (break-keep) */
+.break-keep {
+  word-break: keep-all;
+}

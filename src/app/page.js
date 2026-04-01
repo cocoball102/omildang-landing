@@ -13,18 +13,75 @@ export default function Home() {
     // 전체 배경을 사장님이 주신 그 보라색(#71247C)으로 설정!
     <div className="flex flex-col w-full font-sans bg-[#71247C]">
       
-      {/* [섹션 1] Hero 섹션: 사장님이 정해주신 보라색 그라데이션 */}
-      <section className="h-screen bg-gradient-to-b from-[#71247C] to-[#4a1752] flex flex-col items-center justify-center text-center px-6">
-        <div data-aos="fade-up">
-          <p className="text-yellow-300 font-bold text-lg mb-2">프리미엄 반찬 편집샵</p>
-          <h1 className="text-4xl font-black text-white leading-tight mb-8">
-            오밀당과 함께라면<br/>
-            성공 창업, 꿈이 아닙니다!
+    <section className="relative w-full h-screen min-h-[600px] overflow-hidden bg-[#71247C] px-6 py-12 flex flex-col justify-between items-center text-center">
+        
+        {/* 압도적인 배경 이미지 (public/hero-bg.jpg) - PC에서만 보이게 처리 */}
+        <div 
+          className="absolute inset-0 transition-opacity duration-1000 md:block hidden scale-105"
+          style={{ 
+            backgroundImage: "url('/hero-bg.jpg')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'left top'
+          }}
+        >
+          {/* 이미지 위에 진한 보라색 오버레이 (PC만) */}
+          <div className="absolute inset-0 bg-[#71247C]/70 md:bg-transparent"></div>
+        </div>
+
+        {/* 텍스트 컨텐츠 영역 (모바일/PC 공통 레이아웃 잡기) */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto h-full flex flex-col justify-center items-center text-center gap-6 md:gap-10">
+          
+          {/* 오밀당 로고 (정중앙 배치) */}
+          <div className="animate-fade-in-up md:w-56 w-48 mb-6 mx-auto">
+            <img src="/omildang-logo.png" alt="오밀당 로고" className="w-full h-auto drop-shadow-lg" />
+          </div>
+
+          {/* 1. 상단 강력 카피 (모바일 가독성 업!) */}
+          <p 
+            className="animate-fade-in-up text-yellow-400 font-bold text-lg md:text-2xl tracking-tighter break-keep mx-auto"
+            style={{ animationDelay: '0.3s' }}
+          >
+            지금까지 없었던 <br className="md:hidden" /> 프리미엄 반찬 편집샵 창업
+          </p>
+
+          {/* 2. 메인 타이틀 (폰트Var 적용, 모바일 줄바꿈 해결) */}
+          <h1 
+            data-aos="fade-up" 
+            data-aos-delay="600"
+            className="text-4xl md:text-7xl font-bold text-white leading-[1.2] break-keep drop-shadow-xl tracking-tight"
+          >
+            성공 법칙, <br className="hidden md:block"/>
+            <span className="text-yellow-300">오밀당이</span> <br className="md:hidden" /> 증명합니다.
           </h1>
-          {/* 본사 느낌 노란색 버튼 */}
-          <a href="#apply" className="bg-[#FFD700] text-[#71247C] px-10 py-4 rounded-full font-bold text-xl shadow-2xl hover:scale-105 transition-transform inline-block">
-            무료 상담 신청하기
-          </a>
+
+          {/* 3. 서브 카피 (모바일 가독성 고려) */}
+          <p 
+            className="animate-fade-in-up text-lg md:text-2xl text-white font-medium leading-relaxed max-w-lg break-keep mx-auto"
+            style={{ animationDelay: '0.9s' }}
+          >
+            경험이 없어도 괜찮습니다. 확실한 매니아층으로 <br className="hidden md:block" />
+            매출이 보장되는 매장 운영을 약속합니다.
+          </p>
+
+          {/* 4. 최종 버튼 (은은하게 등장 + 깜빡임 효과) */}
+          <div 
+            className="animate-fade-in-up pt-8 w-full md:w-auto"
+            style={{ animationDelay: '1.2s' }}
+          >
+            <a 
+              href="#apply" 
+              className="bg-[#FFD700] text-[#71247C] px-12 py-5 rounded-full font-black text-2xl shadow-[0_15px_60px_rgba(0,0,0,0.5)] hover:scale-105 transition-transform animate-pulse inline-block w-full md:w-auto text-center"
+            >
+              무료 상담 신청하기
+            </a>
+          </div>
+        </div>
+
+        {/* 아래로 가라는 화살표 표시 (은은하게 깜빡임) */}
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-white/40">
+          <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7-7-7" />
+          </svg>
         </div>
       </section>
 
@@ -100,7 +157,90 @@ export default function Home() {
 
         </div>
       </section>
+      <section className="py-24 bg-white px-6 rounded-[40px] shadow-inner mt-[-20px] relative z-10">
+        <div className="max-w-5xl mx-auto">
+          
+          {/* 타이틀 및 강력한 광고 카피 */}
+          <div data-aos="fade-up" className="text-center mb-16 space-y-3">
+            <p className="text-yellow-500 font-bold text-lg md:text-xl">고민은 상권만 놓칠 뿐!</p>
+            <h2 className="text-4xl md:text-5xl font-black text-[#71247C] leading-tight">
+              오밀당 <span className="underline decoration-[#FFD700] decoration-wavy">개설비용</span> 안내
+            </h2>
+            <p className="text-gray-500 pt-3">가장 합리적인 비용으로 프리미엄 창업을 제안합니다.</p>
+          </div>
 
+          {/* 비용 합계 강조 박스 (광고 카피 포인트!) */}
+          <div data-aos="zoom-in" data-aos-delay="200" className="bg-[#71247C] rounded-3xl p-8 md:p-12 mb-16 text-center shadow-[0_20px_60px_rgba(113,36,124,0.3)]">
+            <p className="text-white opacity-80 text-xl md:text-2xl font-medium">실속형 10평 창업, 지금 시작하세요!</p>
+            <h3 className="text-white text-5xl md:text-7xl font-black pt-4 break-keep">
+              필수 창업비용,<br className="md:hidden" />
+              <span className="text-yellow-300">단돈 2,200만 원대!</span>
+            </h3>
+            <p className="text-white/70 pt-6 text-sm">* 인테리어 및 별도공사 제외 | 부가세 별도</p>
+          </div>
+
+          {/* 상세 비용 표 (모바일 대응) */}
+          <div data-aos="fade-up" data-aos-delay="400" className="bg-gray-50 rounded-3xl p-6 md:p-10 border border-gray-100 shadow-xl">
+            <h4 className="text-xl md:text-2xl font-bold text-[#71247C] mb-8 text-center md:text-left">
+              상세 개설 비용 내역 (10평 기준)
+            </h4>
+            
+            {/* PC 버전 표 */}
+            <table className="w-full text-left hidden md:table border-collapse">
+              <thead className="border-b-2 border-[#71247C]/20">
+                <tr>
+                  <th className="py-4 text-gray-500 font-medium">목록</th>
+                  <th className="py-4 text-[#71247C] font-extrabold text-center">10평 기준 (33.3m²)</th>
+                  <th className="py-4 text-gray-500 font-medium pl-6">비고</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-100 text-black">
+                {[
+                  { list: '가맹비', cost: '400만원', note: '' },
+                  { list: '교육비', cost: '면제', note: '본사지원' },
+                  { list: '시설비', cost: '1,400만원', note: '평수에 따라 협의' },
+                  { list: '시스템', cost: '250만원', note: '무인키오스크 일체, 포스(임대)' },
+                  { list: '오픈홍보비', cost: '150만원', note: '오픈홍보물, 판촉물 일체' },
+                  { list: '인테리어 / 간판', cost: '실측 후 협의', note: '바닥·천장, 전면채널간판 일체' },
+                ].map((item, idx) => (
+                  <tr key={idx} className={`${item.cost === '면제' ? 'bg-[#71247C]/5' : ''}`}>
+                    <td className="py-5 font-bold">{item.list}</td>
+                    <td className="py-5 text-center font-black text-xl text-black">{item.cost}</td>
+                    <td className="py-5 pl-6 text-sm text-gray-500 break-keep">{item.note}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+
+            {/* 모바일 버전 표 (카드 리스트 형식) */}
+            <div className="md:hidden space-y-4 text-black">
+              {[
+                { list: '가맹비', cost: '400만원', note: '' },
+                { list: '교육비', cost: '면제', note: '본사지원' },
+                { list: '시설비', cost: '1,400만원', note: '평수에 따라 협의' },
+                { list: '시스템', cost: '250만원', note: '무인키오스크 일체, 포스(임대)' },
+                { list: '오픈홍보비', cost: '150만원', note: '오픈홍보물, 판촉물 일체' },
+                { list: '인테리어 / 간판', cost: '실측 후 협의', note: '바닥·천장, 전면채널간판 일체' },
+              ].map((item, idx) => (
+                <div key={idx} className="bg-white p-5 rounded-xl border shadow-sm">
+                  <div className="flex justify-between items-center mb-1">
+                    <span className="font-bold">{item.list}</span>
+                    <span className="font-black text-lg text-black">{item.cost}</span>
+                  </div>
+                  {item.note && <p className="text-xs text-gray-500 break-keep">{item.note}</p>}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* 하단 유의사항 */}
+          <div data-aos="fade-up" className="mt-12 text-gray-400 text-xs md:text-sm space-y-1.5 px-2">
+            <p>• 철거 및 외부 공사, 전기 승압 등 별도공사 및 사이즈에 따라서 변동 될 수 있습니다.</p>
+            <p>• 로열티 20만원, 계약이행보증금 100만원</p>
+          </div>
+
+        </div>
+      </section>
       {/* [섹션 3] 가맹 문의 폼: 다시 보라색 포인트 */}
       <section id="apply" className="py-20 bg-[#f9f9f9] px-6">
         {/* 1. 흰색 카드 컨테이너 (그림자와 보라색 상단 테두리) */}

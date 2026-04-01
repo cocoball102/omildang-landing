@@ -1,5 +1,14 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Noto_Sans_KR, Black_Han_Sans, Do_Hyeon } from 'next/font/google'
+
+// 1. 기본 본문용: 깔끔하고 가독성 좋은 폰트
+const noto = Noto_Sans_KR({ subsets: ['latin'], weight: ['400', '700', '900'] })
+// 2. 메인 타이틀용: 아주 두껍고 임팩트 있는 폰트
+const blackHan = Black_Han_Sans({ subsets: ['latin'], weight: '400', variable: '--font-black' })
+// 3. 강조용: 개성 있고 스포티한 폰트
+const doHyeon = Do_Hyeon({ subsets: ['latin'], weight: '400', variable: '--font-dohyeon' })
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,8 +27,9 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="ko" className="h-full antialiased">
-      <body className="min-h-full flex flex-col bg-[#4b2c85] text-white font-sans">
+    <html lang="ko" className={`h-full antialiased ${blackHan.variable} ${doHyeon.variable}`}>
+      {/* 사장님이 쓰시던 body 스타일 그대로 유지 + 기본 폰트 적용 */}
+      <body className={`${noto.className} min-h-full flex flex-col bg-[#4b2c85] text-white font-sans`}>
         <main className="w-full max-w-[700px] mx-auto min-h-screen shadow-2xl bg-[#4b2c85] relative overflow-hidden">
           {children}
         </main>
