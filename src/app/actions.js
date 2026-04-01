@@ -1,4 +1,4 @@
-'use server' // "이 코드는 서버에서만 돌아간다"는 선언입니다. (보안!)
+'use server' 
 console.log("주소 체크:", process.env.NEXT_PUBLIC_SUPABASE_URL ? "있음" : "없음");
 
 import { createClient } from '@supabase/supabase-js'
@@ -12,7 +12,7 @@ export async function submitApplication(formData) {
   // 1. 전화번호 가공 (숫자만 남기기)
   const cleanPhone = formData.phone.replace(/[^0-9]/g, '');
   console.log("가공된 전화번호:", cleanPhone);
-  
+
   // 2. DB Insert (JPA의 .save()와 똑같습니다!)
   const { data, error } = await supabase
     .from('application') // 사장님이 만든 테이블명
